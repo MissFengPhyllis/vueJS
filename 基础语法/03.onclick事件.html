@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        {{counter}}
+        <!-- 第一种方法，直接嵌入 -->
+        <!-- <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button> -->
+
+        <!-- 第二种方法，使用函数 -->
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data:{
+                message:"今天要实现计数器",
+                counter:0
+            },
+            methods:{
+                add: function(){
+                    //这里地方要用this来指代是这个对象里面的counter，不然就会出现局部变量和全局变量的问题
+                    this.counter++
+                },
+                sub: function(){
+                    this.counter--
+                }
+
+            }
+        })
+    </script>
+
+</body>
+</html>
